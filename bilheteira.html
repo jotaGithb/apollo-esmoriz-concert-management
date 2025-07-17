@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilheteira Online - Apollo Esmoriz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>APOLLO<br>ESMORIZ</h1>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">INÍCIO</a>
+                    <a href="index.html#lugar" class="nav-link">LUGAR</a>
+                    <a href="index.html#contacto" class="nav-link">CONTACTO</a>
+                    <a href="bilheteira.html" class="nav-link active">BILHETEIRA</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="login.html" class="login-btn">Log In</a>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bilheteira Section -->
+    <section class="bilheteira-section">
+        <div class="container">
+            <div class="bilheteira-header">
+                <h1>Bilheteira Online</h1>
+                <p>Compre os seus bilhetes de forma rápida e segura</p>
+            </div>
+
+            <div class="bilheteira-container">
+                <!-- Event Selection -->
+                <div class="bilheteira-step active" id="step-1">
+                    <div class="step-header">
+                        <h2>1. Escolha o Evento</h2>
+                    </div>
+                    
+                    <div class="events-grid">
+                        <div class="event-card" data-event="metal-festival">
+                            <div class="event-image">
+                                <img src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Metal Festival">
+                            </div>
+                            <div class="event-info">
+                                <h3>Metal Festival</h3>
+                                <p class="event-date">05/09/2025 - 22:00</p>
+                                <p class="event-location">Apollo Esmoriz</p>
+                                <p class="event-price">A partir de €25</p>
+                                <button class="btn btn-primary select-event-btn">Selecionar</button>
+                            </div>
+                        </div>
+
+                        <div class="event-card" data-event="rock-night">
+                            <div class="event-image">
+                                <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Rock Night">
+                            </div>
+                            <div class="event-info">
+                                <h3>Rock Night</h3>
+                                <p class="event-date">12/09/2025 - 21:30</p>
+                                <p class="event-location">Apollo Esmoriz</p>
+                                <p class="event-price">A partir de €20</p>
+                                <button class="btn btn-primary select-event-btn">Selecionar</button>
+                            </div>
+                        </div>
+
+                        <div class="event-card" data-event="indie-session">
+                            <div class="event-image">
+                                <img src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Indie Session">
+                            </div>
+                            <div class="event-info">
+                                <h3>Indie Session</h3>
+                                <p class="event-date">19/09/2025 - 20:00</p>
+                                <p class="event-location">Apollo Esmoriz</p>
+                                <p class="event-price">A partir de €15</p>
+                                <button class="btn btn-primary select-event-btn">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ticket Selection -->
+                <div class="bilheteira-step" id="step-2">
+                    <div class="step-header">
+                        <h2>2. Escolha os Bilhetes</h2>
+                        <button class="btn btn-outline back-btn" id="back-to-step-1">Voltar</button>
+                    </div>
+
+                    <div class="selected-event-info" id="selected-event-info">
+                        <!-- Event info will be populated by JavaScript -->
+                    </div>
+
+                    <div class="ticket-types" id="ticket-types">
+                        <!-- Ticket types will be populated by JavaScript -->
+                    </div>
+
+                    <div class="ticket-summary" id="ticket-summary">
+                        <h3>Resumo</h3>
+                        <div class="summary-content">
+                            <p>Nenhum bilhete selecionado</p>
+                        </div>
+                        <button class="btn btn-primary continue-btn" id="continue-to-payment" disabled>Continuar para Pagamento</button>
+                    </div>
+                </div>
+
+                <!-- Payment -->
+                <div class="bilheteira-step" id="step-3">
+                    <div class="step-header">
+                        <h2>3. Pagamento</h2>
+                        <button class="btn btn-outline back-btn" id="back-to-step-2">Voltar</button>
+                    </div>
+
+                    <div class="payment-container">
+                        <div class="payment-form">
+                            <form id="payment-form">
+                                <div class="form-section">
+                                    <h3>Informações Pessoais</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="customer-name">Nome Completo *</label>
+                                            <input type="text" id="customer-name" name="name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="customer-email">Email *</label>
+                                            <input type="email" id="customer-email" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="customer-phone">Telefone *</label>
+                                            <input type="tel" id="customer-phone" name="phone" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="customer-nif">NIF (opcional)</label>
+                                            <input type="text" id="customer-nif" name="nif">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-section">
+                                    <h3>Método de Pagamento</h3>
+                                    <div class="payment-methods">
+                                        <label class="payment-method">
+                                            <input type="radio" name="payment-method" value="mbway" checked>
+                                            <div class="payment-option">
+                                                <div class="payment-logo mbway">MB WAY</div>
+                                                <span>Pagamento instantâneo via MB WAY</span>
+                                            </div>
+                                        </label>
+
+                                        <label class="payment-method">
+                                            <input type="radio" name="payment-method" value="viva-wallet">
+                                            <div class="payment-option">
+                                                <div class="payment-logo viva">VIVA WALLET</div>
+                                                <span>Pagamento seguro via Viva Wallet</span>
+                                            </div>
+                                        </label>
+
+                                        <label class="payment-method">
+                                            <input type="radio" name="payment-method" value="card">
+                                            <div class="payment-option">
+                                                <div class="payment-logo card">CARTÃO</div>
+                                                <span>Visa, Mastercard, American Express</span>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <!-- MB WAY Details -->
+                                    <div class="payment-details" id="mbway-details">
+                                        <div class="form-group">
+                                            <label for="mbway-phone">Número de Telemóvel MB WAY *</label>
+                                            <input type="tel" id="mbway-phone" name="mbway-phone" placeholder="9xxxxxxxx">
+                                            <small>Introduza o número associado ao MB WAY (sem indicativo)</small>
+                                        </div>
+                                    </div>
+
+                                    <!-- Viva Wallet Details -->
+                                    <div class="payment-details" id="viva-details" style="display: none;">
+                                        <div class="viva-info">
+                                            <p>Será redirecionado para o Viva Wallet para completar o pagamento de forma segura.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Details -->
+                                    <div class="payment-details" id="card-details" style="display: none;">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="card-number">Número do Cartão *</label>
+                                                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="card-expiry">Validade *</label>
+                                                <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="card-cvv">CVV *</label>
+                                                <input type="text" id="card-cvv" name="card-cvv" placeholder="123">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-name">Nome no Cartão *</label>
+                                            <input type="text" id="card-name" name="card-name">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-section">
+                                    <div class="terms-checkbox">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" id="accept-terms" required>
+                                            <span class="checkmark"></span>
+                                            Aceito os <a href="#" target="_blank">Termos e Condições</a> e a <a href="#" target="_blank">Política de Privacidade</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="payment-summary">
+                            <h3>Resumo da Compra</h3>
+                            <div class="summary-details" id="payment-summary-details">
+                                <!-- Summary will be populated by JavaScript -->
+                            </div>
+                            <div class="summary-total">
+                                <div class="total-line">
+                                    <span>Total:</span>
+                                    <span class="total-amount" id="total-amount">€0.00</span>
+                                </div>
+                            </div>
+                            <button type="submit" form="payment-form" class="btn btn-primary btn-full payment-btn">
+                                Finalizar Compra
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success -->
+                <div class="bilheteira-step" id="step-4">
+                    <div class="success-container">
+                        <div class="success-icon">✓</div>
+                        <h2>Compra Realizada com Sucesso!</h2>
+                        <p>Os seus bilhetes foram enviados para o email indicado.</p>
+                        
+                        <div class="order-details" id="order-details">
+                            <!-- Order details will be populated by JavaScript -->
+                        </div>
+
+                        <div class="success-actions">
+                            <button class="btn btn-primary" id="download-tickets">Descarregar Bilhetes</button>
+                            <a href="index.html" class="btn btn-outline">Voltar ao Início</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/bilheteira.js"></script>
+</body>
+</html>
